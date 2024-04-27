@@ -41,34 +41,18 @@ const addGameController = async (req, res) => {
 // Получим игры из JSON-файла и отправим в ответ на запрос
 const sendAllGames = async (req, res) => {
     res.send(req.games);
-  };
-  
-  const deleteGame = async (req, res) => {
-    // Прочитаем запрашиваемый id игры из запроса
-      const id = Number(req.params.id);
-      
-      // Найдём игру, которую хотят удалить, в общем массиве с играми по id
-      req.game = req.games.find((item) => item.id === id);
-      
-      // Найдём индекс удаляемой игры в общем массиве игр
-      const index = req.games.findIndex((item) => item.id === req.game.id);
-      
-      // Удалим из массива игр игру
-      req.games.splice(index, 1);
-      
-      // Запишем обновлённый массив игр в JSON-файл
-      await writeData("./data/games.json", req.games);
-      
-      // Вернём ответ о проделанной операции с данными об играх
-      res.send({
-      games: req.games,
-      updated: req.game
-    });
-}
+};
+
+const sendUpdatedGames = (req, res) => {
+  res.send({
+    games: req.games,
+    updated: req.updatedObject
+  });
+};
 
 module.exports = {
     sendAllGames,
-    deleteGame,
+    sendUpdatedGames,
     addGameController
-}
+};
 

@@ -5,7 +5,7 @@ const fs = require('fs').promises;
 
 
 mainRoute.get("/", (req, res) => {
-  fs.readFile('./public/index.html', "utf-8").then((data) => {
+  fs.readFile('../public/index.html', "utf-8").then((data) => {
     res.header("Content-type", "text/html").send(data);
   });
 });
