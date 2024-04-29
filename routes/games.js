@@ -5,7 +5,7 @@ const { getAllGames, checkIsTitleInArray, updateGamesArray, updateGamesFile, fin
 
 
 gamesRouter.get("/games", getAllGames, sendAllGames)
-gamesRouter.delete("/games/:id", getAllGames, findGameById, updateGamesFile, sendUpdatedGames, deleteGame);
+gamesRouter.delete("/games/:id", getAllGames, findGameById, deleteGame, updateGamesFile, sendUpdatedGames);
 gamesRouter.post("/games", getAllGames, checkIsTitleInArray, updateGamesArray, updateGamesFile, findGameById, sendUpdatedGames);
 
 module.exports = gamesRouter;
